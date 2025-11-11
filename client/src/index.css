@@ -1,0 +1,198 @@
+/* Removed Tailwind directives to avoid PostCSS / Tailwind runtime errors.
+   Using simple CSS so the UI renders correctly without Tailwind. */
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #0f1721; /* dark slate */
+  color: #ffffff;
+}
+
+/* Basic container styles to approximate the Tailwind layout used by the app */
+.app-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 1rem;
+}
+
+.chat-card {
+  width: 100%;
+  max-width: 768px;
+  background: #111827;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.chat-title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.chat-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:0.75rem;
+}
+.chat-sub { margin:0; color:#9ca3af; font-size:0.9rem }
+.brand { font-size:1.6rem }
+
+.messages {
+  height: 60vh;
+  overflow: auto;
+  border: 1px solid #1f2937;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #0b1220;
+}
+
+.message {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.avatar { width:36px; height:36px; border-radius:999px; background:#111827; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700 }
+.bubble-wrap { display:flex; flex-direction:column; align-items:flex-start }
+.meta { font-size:0.75rem; color:#94a3b8; margin-top:0.25rem }
+
+.message.user .bubble { background: linear-gradient(90deg,#2563eb,#3b82f6); }
+.message.user .avatar { background:#2563eb }
+
+.typing { display:inline-flex; gap:6px }
+.typing span { width:8px; height:8px; background:#9ca3af; border-radius:50%; display:inline-block; animation:typing 1s infinite }
+.typing span:nth-child(2) { animation-delay:0.15s }
+.typing span:nth-child(3) { animation-delay:0.3s }
+@keyframes typing { 0% { transform:translateY(0); opacity:0.4 } 50%{ transform:translateY(-4px); opacity:1 } 100%{ transform:translateY(0); opacity:0.4 } }
+
+.message .bubble {
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.75rem;
+  max-width: 60%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.message.ai .bubble { background: #1f2937; color: #fff; }
+.message.user { justify-content: flex-end; }
+.message.user .bubble { background: #2563eb; color: #fff; }
+
+/* Formatted text styling for markdown and rich content */
+.formatted-text {
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.formatted-text h1,
+.formatted-text h2,
+.formatted-text h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: #fff;
+}
+
+.formatted-text h1 { font-size: 1.3rem; }
+.formatted-text h2 { font-size: 1.1rem; }
+.formatted-text h3 { font-size: 1rem; }
+
+.formatted-text p {
+  margin: 0.5rem 0;
+  color: #e5e7eb;
+}
+
+.formatted-text ul,
+.formatted-text ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.formatted-text li {
+  margin: 0.25rem 0;
+  color: #e5e7eb;
+}
+
+.formatted-text code {
+  background: #0b1220;
+  color: #fbbf24;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+}
+
+.formatted-text pre {
+  background: #0b1220;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.formatted-text pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.formatted-text blockquote {
+  border-left: 3px solid #2563eb;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  font-style: italic;
+  color: #9ca3af;
+}
+
+.formatted-text a {
+  color: #60a5fa;
+  text-decoration: underline;
+}
+
+.formatted-text a:hover {
+  color: #93c5fd;
+}
+
+.formatted-text strong {
+  font-weight: 700;
+  color: #fff;
+}
+
+.formatted-text em {
+  font-style: italic;
+}
+
+.formatted-text table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+.formatted-text th,
+.formatted-text td {
+  border: 1px solid #334155;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.formatted-text th {
+  background: #1f2937;
+  font-weight: 700;
+}
+
+
+.input-row { display:flex; margin-top: 1rem; }
+.input-row input { flex:1; padding:0.6rem; border-radius:0.375rem 0 0 0.375rem; border:1px solid #334155; background:#0b1220; color:#fff }
+.input-row button { padding:0 0.9rem; border-radius:0 0.375rem 0.375rem 0; background:#2563eb; border:none; color:#fff }
+
+/* Styles for the new class names used in App.jsx */
+.input { flex:1; padding:0.6rem; border-radius:0.375rem 0 0 0.375rem; border:1px solid #334155; background:#0b1220; color:#fff }
+.send-button { padding:0 0.9rem; border-radius:0 0.375rem 0.375rem 0; background:#2563eb; border:none; color:#fff; display:flex; align-items:center; justify-content:center }
+
